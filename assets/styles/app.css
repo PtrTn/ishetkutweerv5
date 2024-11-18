@@ -1,3 +1,9 @@
-body {
-    background-color: skyblue;
+.bg-lightblue {
+    background-color: #b4d7fe;
+}
+.bg-darkblue {
+    background-color: #5c9ce5;
+}
+.bg-lighterblue {
+    background-color: #e4f1ff;
 }
