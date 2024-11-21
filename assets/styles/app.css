@@ -14,6 +14,13 @@
     background-color: #e9ecef !important;
 }
 
+.weather-background-image {
+    background-image: url( '/images/rainy.svg' );
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-position: bottom 50px center;
+}
+
 .fs-h-1 {
     font-size: 10rem !important;
 }
