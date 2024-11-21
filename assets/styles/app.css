@@ -10,9 +10,22 @@
 .progress-bar-blue {
     background-color: #5c9ce5 !important;
 }
+.progress-bar-gray {
+    background-color: #e9ecef !important;
+}
 
-
-
+.fs-h-1 {
+    font-size: 10rem !important;
+}
+.fs-h-2 {
+    font-size: 8rem !important;
+}
+.fs-h-3 {
+    font-size: 6rem !important;
+}
+.fs-h-4 {
+    font-size: 4rem !important;
+}
 
 
 /* ------ Gauge style ---------- */
