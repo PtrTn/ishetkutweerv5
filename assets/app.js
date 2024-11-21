@@ -4,7 +4,7 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 
 Gauge(
-    document.getElementById("gauge5"), {
+    document.getElementById("wind-gauge"), {
         max: 10,
         dialStartAngle: 0,
         dialEndAngle: 180,
