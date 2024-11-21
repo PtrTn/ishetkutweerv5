@@ -53,13 +53,13 @@
 .gauge-container > .gauge .dial {
     fill: rgba(0,0,0,0);
     stroke: #b4d7fe;
-    stroke-width: 5;
+    stroke-width: 10;
 }
 .gauge-container > .gauge .value {
     fill: rgba(0,0,0,0);
     stroke: #5c9ce5;
     stroke-dasharray: 25 1;
-    stroke-width: 5;
+    stroke-width: 10;
 }
 .gauge-container > .gauge .value-text {
     fill: #000000;
