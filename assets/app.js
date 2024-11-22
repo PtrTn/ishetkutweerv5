@@ -65,7 +65,7 @@ new Chart(ctx, {
                         mode: 'vertical',
                         scaleID: 'x',
                         value: '10:00',
-                        borderColor: 'black',
+                        borderColor: 'grey',
                         borderWidth: 2,
                     },
                     {
@@ -73,7 +73,7 @@ new Chart(ctx, {
                         mode: 'vertical',
                         scaleID: 'x',
                         value: '11:00',
-                        borderColor: 'black',
+                        borderColor: 'grey',
                         borderWidth: 1,
                     },
                     {
@@ -81,7 +81,7 @@ new Chart(ctx, {
                         mode: 'vertical',
                         scaleID: 'x',
                         value: '12:00',
-                        borderColor: 'black',
+                        borderColor: 'grey',
                         borderWidth: 1,
                     },
                     {
@@ -89,7 +89,7 @@ new Chart(ctx, {
                         mode: 'vertical',
                         scaleID: 'x',
                         value: '13:00',
-                        borderColor: 'black',
+                        borderColor: 'grey',
                         borderWidth: 1,
                     },
                     {
@@ -97,7 +97,7 @@ new Chart(ctx, {
                         mode: 'vertical',
                         scaleID: 'x',
                         value: '14:00',
-                        borderColor: 'black',
+                        borderColor: 'grey',
                         borderWidth: 2,
                     },
                 ]
