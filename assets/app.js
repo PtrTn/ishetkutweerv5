@@ -20,7 +20,7 @@ new Chart(ctx, {
     type: 'line',
     color: '#5c9ce5',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+        labels: ['10:00', '11:00', '12:00', '13:00', '14:00'],
         datasets: [
             {
                 borderColor: '#5c9ce5',
@@ -30,7 +30,7 @@ new Chart(ctx, {
                     above: '#5c9ce5',
                 },
                 data: [1, 2, 0, 0, 2],
-                borderWidth: 5,
+                borderWidth: 0,
                 pointRadius: 0,
             },
         ]
@@ -38,20 +38,70 @@ new Chart(ctx, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: false
+        layout: {
+            padding: {
+                left: 20,
+                right: 20,
             }
         },
         scales: {
             x: {
-                display: false
+                display: false,
             },
             y: {
                 display: false,
                 suggestedMin: 0,
                 suggestedMax: 5,
             },
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: '10:00',
+                        borderColor: 'black',
+                        borderWidth: 2,
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: '11:00',
+                        borderColor: 'black',
+                        borderWidth: 1,
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: '12:00',
+                        borderColor: 'black',
+                        borderWidth: 1,
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: '13:00',
+                        borderColor: 'black',
+                        borderWidth: 1,
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: '14:00',
+                        borderColor: 'black',
+                        borderWidth: 2,
+                    },
+                ]
+            }
         }
     }
 });

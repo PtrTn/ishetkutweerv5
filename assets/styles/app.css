@@ -21,6 +21,10 @@
     background-position: bottom 50px center;
 }
 
+.data-point {
+    min-width: 45px;
+}
+
 .fs-h-1 {
     font-size: 10rem !important;
 }
