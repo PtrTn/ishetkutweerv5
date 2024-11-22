@@ -21,17 +21,19 @@ new Chart(ctx, {
     color: '#5c9ce5',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-        datasets: [{
-            label: '# of Votes',
-            tension: 0.1,
-            fill: {
-                target: 'origin',
-                above: '#5c9ce5',
+        datasets: [
+            {
+                borderColor: '#5c9ce5',
+                tension: 0.1,
+                fill: {
+                    target: 'origin',
+                    above: '#5c9ce5',
+                },
+                data: [1, 2, 0, 0, 2],
+                borderWidth: 5,
+                pointRadius: 0,
             },
-            data: [12, 19, 3, 5, 2],
-            borderWidth: 1,
-            pointRadius: 0,
-        }]
+        ]
     },
     options: {
         responsive: true,
@@ -43,11 +45,13 @@ new Chart(ctx, {
         },
         scales: {
             x: {
-                beginAtZero: true,
-                grid: {display: false},
-                title: {display: false}
+                display: false
             },
-            y: {display: false},
+            y: {
+                display: false,
+                suggestedMin: 0,
+                suggestedMax: 5,
+            },
         }
     }
 });
