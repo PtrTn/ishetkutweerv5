@@ -1,7 +1,6 @@
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
-
 const gaugeNeedle = {
     id: "gaugeNeedle",
     afterDatasetDraw(chart, args, options) {
@@ -14,13 +13,11 @@ const gaugeNeedle = {
 
         ctx.save();
         const needleValue = data.datasets[0].needleValue;
-        const meterValue = data.datasets[0].meterValue;
         const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
         const angle = Math.PI + (1 / dataTotal) * needleValue * Math.PI;
 
         const cx = chart._metasets[0].data[0].x;
         const cy = chart._metasets[0].data[0].y;
-        const outerRadius = chart._metasets[0].data[0].outerRadius;
         const innerRaidus = chart._metasets[0].data[0].innerRadius;
 
         // Needle
@@ -28,13 +25,20 @@ const gaugeNeedle = {
         ctx.rotate(angle);
         ctx.beginPath();
         ctx.fillStyle = "#5c9ce5";
-        ctx.fillRect(30, -10, innerRaidus - 50, 20);
 
-        // Needle Dot
+        ctx.moveTo(0, -10);
+        ctx.lineTo(40, 0);
+        ctx.lineTo(0, 10);
+        ctx.fill();
+
+        // Dot
         ctx.translate(-cx, -cy);
         ctx.beginPath();
-        ctx.arc(cx+10, cy, 10, 0, 2 * Math.PI);
+        ctx.arc(cx, cy, 12, 0, 2 * Math.PI);
         ctx.fill();
+        ctx.restore();
+
+        // ctx.fillRect(0, -10, innerRaidus - 5, 20);
         ctx.restore();
     }
 };
@@ -44,14 +48,13 @@ new Chart(document.getElementById('rainChart2'), {
     data: {
         datasets: [{
             data: [20, 20, 20, 20, 20],
-            needleValue: 40,
+            needleValue: 20,
             backgroundColor: ["#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5"]
         }]
     },
     options: {
         rotation: 270,
-        cutout: 90,
-        aspectRatio: 1,
+        cutout: '70%',
         circumference: 180,
         borderWidth: 10,
     },
