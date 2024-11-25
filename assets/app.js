@@ -6,12 +6,32 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 Gauge(
     document.getElementById("wind-gauge"), {
         max: 10,
-        dialStartAngle: 0,
-        dialEndAngle: 180,
+        dialStartAngle: 180,
+        dialEndAngle: 0,
         value: 6,
         viewBox: "0 0 100 60"
     }
 );
+
+new Chart(document.getElementById('rainChart2'), {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [20, 20, 20, 20, 20],
+            backgroundColor: ["#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5"]
+        }]
+    },
+    options: {
+        rotation: 270,
+        circumference: 180,
+        elements: {
+            arc: {
+                borderWidth: 10,
+            }
+        }
+    }
+});
+
 
 
 new Chart(document.getElementById('rainChart'), {
