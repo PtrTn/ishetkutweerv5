@@ -14,6 +14,10 @@
     background-color: #e9ecef !important;
 }
 
+.text-blue {
+    color: #5c9ce5 !important;
+}
+
 .weather-background-image {
     background-image: url( '/images/rainy.svg' );
     background-size: 400px;
@@ -37,7 +41,17 @@
 .fs-h-4 {
     font-size: 4rem !important;
 }
+.fs-h-5 {
+    font-size: 3rem !important;
+}
 
+.rotate-135 {
+    -webkit-transform: rotate(45135);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
 
 /* ------ Gauge style ---------- */
 .gauge-container {
