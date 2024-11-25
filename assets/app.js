@@ -1,6 +1,7 @@
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
+
 const gaugeNeedle = {
     id: "gaugeNeedle",
     afterDatasetDraw(chart, args, options) {
@@ -13,12 +14,12 @@ const gaugeNeedle = {
 
         ctx.save();
         const needleValue = data.datasets[0].needleValue;
+        const meterValue = data.datasets[0].meterValue;
         const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
         const angle = Math.PI + (1 / dataTotal) * needleValue * Math.PI;
 
         const cx = chart._metasets[0].data[0].x;
         const cy = chart._metasets[0].data[0].y;
-        const innerRaidus = chart._metasets[0].data[0].innerRadius;
 
         // Needle
         ctx.translate(cx, cy);
@@ -38,8 +39,10 @@ const gaugeNeedle = {
         ctx.fill();
         ctx.restore();
 
-        // ctx.fillRect(0, -10, innerRaidus - 5, 20);
-        ctx.restore();
+        ctx.font = "bold 26px sans-serif";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText(meterValue, cx, cy - 55);
     }
 };
 
@@ -47,8 +50,9 @@ new Chart(document.getElementById('rainChart2'), {
     type: 'doughnut',
     data: {
         datasets: [{
-            data: [20, 20, 20, 20, 20],
-            needleValue: 20,
+            data: [2, 2, 2, 2, 2],
+            needleValue: 6,
+            meterValue: '6 bft.',
             backgroundColor: ["#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5"]
         }]
     },
