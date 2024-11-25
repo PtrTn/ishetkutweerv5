@@ -14,9 +14,7 @@ Gauge(
 );
 
 
-const ctx = document.getElementById('myChart');
-
-new Chart(ctx, {
+new Chart(document.getElementById('rainChart'), {
     type: 'line',
     color: '#5c9ce5',
     data: {
