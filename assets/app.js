@@ -18,18 +18,50 @@ new Chart(document.getElementById('rainChart2'), {
     data: {
         datasets: [{
             data: [20, 20, 20, 20, 20],
+            needleValue: 40,
             backgroundColor: ["#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5"]
         }]
     },
     options: {
+        cutout: 60,
         rotation: 270,
         circumference: 180,
         elements: {
             arc: {
-                borderWidth: 10,
+                borderWidth: 15,
             }
         }
-    }
+    },
+
+    plugins: [{
+        afterDraw: chart => {
+            return;
+            var needleValue = chart.config.data.datasets[0].needleValue;
+            var dataTotal = chart.config.data.datasets[0].data.reduce((a, b) => a + b, 0);
+            var angle = Math.PI + (1 / dataTotal * needleValue * Math.PI);
+            var ctx = chart.ctx;
+            var cw = chart.canvas.offsetWidth;
+            var ch = chart.canvas.offsetHeight;
+            var cx = cw / 2;
+            var cy = ch - 6;
+
+            console.log(chart.config.data.datasets, dataTotal, angle)
+
+            ctx.translate(cx, cy);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.moveTo(0, -3);
+            ctx.lineTo(ch - 20, 0);
+            ctx.lineTo(0, 3);
+            ctx.fillStyle = 'rgb(0, 0, 0)';
+            ctx.fill();
+            ctx.rotate(-angle);
+            ctx.translate(-cx, -cy);
+            ctx.beginPath();
+            ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }],
 });
 
 
