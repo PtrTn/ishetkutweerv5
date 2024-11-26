@@ -1,0 +1,13 @@
+{% set increment = (max - min) / 3 %}
+<div class="d-flex justify-content-between text-black-50">
+    <span>{{ min }}{{ unit }}</span>
+    <span>{{ min + increment }}{{ unit }}</span>
+    <span>{{ max - increment }}{{ unit }}</span>
+    <span>{{ max }}{{ unit }}</span>
+</div>
+{% set percentage = value / (max - min) * 100 %}
+
+<div class="progress">
+    {# todo, calc bar progress #}
+    <div class="progress-bar progress-bar-blue" role="progressbar" style="width: {{ percentage }}%" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
