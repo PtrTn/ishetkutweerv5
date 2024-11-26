@@ -2,7 +2,7 @@
 
 namespace App\Query;
 
-class FetchBuienradarByIpQuery
+class FetchWeatherByIpQuery
 {
 
 }
