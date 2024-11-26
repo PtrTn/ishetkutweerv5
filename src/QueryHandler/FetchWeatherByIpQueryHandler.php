@@ -4,13 +4,17 @@ namespace App\QueryHandler;
 
 use App\ApiClient\BuienradarApiClient;
 use App\Factory\BuienradarResponseDtoFactory;
+use App\Factory\WeatherModelFactory;
+use App\Filter\LocationFilter;
 use App\Query\FetchWeatherByIpQuery;
 
 class FetchWeatherByIpQueryHandler
 {
     public function __construct(
         private BuienradarApiClient $apiClient,
-        private BuienradarResponseDtoFactory $responseFactory
+        private BuienradarResponseDtoFactory $responseFactory,
+        private LocationFilter $locationFilter,
+        private WeatherModelFactory $modelFactory,
     )
     {
     }
@@ -21,8 +25,10 @@ class FetchWeatherByIpQueryHandler
         // todo, convert ip to lat/lon location
         $responseData = $this->apiClient->getData();
         $responseDto = $this->responseFactory->create($responseData);
-        dd($responseDto);
-        // todo, filter based on lat/lon location
-        // todo, convert to model used by view
+        $stationDto = $this->locationFilter->filter($responseDto->actual->stationmeasurements);
+
+        $model = $this->modelFactory->create($stationDto, $responseDto->forecast);
+
+        dd($model);
     }
 }
