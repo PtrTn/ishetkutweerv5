@@ -2,15 +2,25 @@
 
 namespace App\Controller;
 
+use App\Query\FetchBuienradarByIpQuery;
+use App\QueryHandler\FetchBuienradarByIpQueryHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class HomeController extends AbstractController
+class WeatherController extends AbstractController
 {
-    #[Route('/')]
-    public function number(): Response
+    public function __construct(private FetchBuienradarByIpQueryHandler $queryHandler)
     {
+    }
+
+    #[Route('/')]
+    public function weatherByIp(): Response
+    {
+        $query = new FetchBuienradarByIpQuery();
+        $this->queryHandler->query($query);
+        // todo, plug model into view
+
         return $this->render('index.html.twig', [
             'windSpeed' => 6,
             'rainData' => [
