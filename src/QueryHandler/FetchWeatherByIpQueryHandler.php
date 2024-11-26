@@ -6,6 +6,7 @@ use App\ApiClient\BuienradarApiClient;
 use App\Factory\BuienradarResponseDtoFactory;
 use App\Factory\WeatherModelFactory;
 use App\Filter\LocationFilter;
+use App\Model\WeatherModel;
 use App\Query\FetchWeatherByIpQuery;
 
 class FetchWeatherByIpQueryHandler
@@ -19,16 +20,13 @@ class FetchWeatherByIpQueryHandler
     {
     }
 
-    public function query(FetchWeatherByIpQuery $query): void
+    public function query(FetchWeatherByIpQuery $query): WeatherModel
     {
-        // todo, fetch client ip
         // todo, convert ip to lat/lon location
         $responseData = $this->apiClient->getData();
         $responseDto = $this->responseFactory->create($responseData);
         $stationDto = $this->locationFilter->filter($responseDto->actual->stationmeasurements);
 
-        $model = $this->modelFactory->create($stationDto, $responseDto->forecast);
-
-        dd($model);
+        return $this->modelFactory->create($stationDto, $responseDto->forecast);
     }
 }

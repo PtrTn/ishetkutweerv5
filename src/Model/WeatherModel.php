@@ -8,14 +8,17 @@ readonly class WeatherModel
         public string $region,
         public \DateTimeImmutable $dateTime,
         public int $temperature,
-        public string $description,
+        public string $shortDescription,
         public string $animationIcon,
+        public string $title,
+        public string $longDescription,
         public RainForecastModel $rainForecast,
         public int $feelTemperature,
         public int $windSpeed,
         public int $rain,
         public int $sunPower,
-        public int $windDirection,
+        public string $windDirectionText,
+        public int $windDirectionDegrees,
     )
     {
     }

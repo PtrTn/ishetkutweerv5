@@ -22,12 +22,15 @@ class WeatherModelFactory
             (int) round($stationDto->temperature),
             $stationDto->weatherdescription,
             'rainy', // todo, calculate dynamically
-            new RainForecastModel(),
+            $forecastDto->weatherreport->title,
+            $forecastDto->weatherreport->summary,
+            new RainForecastModel(), // todo, get rain data for upcoming hours
             (int) round($stationDto->feeltemperature),
             (int) round($stationDto->windspeedBft),
             (int) round($stationDto->precipitation),
             (int) round($stationDto->sunpower / 10),
-            (int) $stationDto->winddirectiondegrees
+            $stationDto->winddirection, // todo, translate to text
+            (int) $stationDto->winddirectiondegrees,
         );
     }
 }

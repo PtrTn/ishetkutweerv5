@@ -17,19 +17,10 @@ class WeatherController extends AbstractController
     #[Route('/')]
     public function weatherByIp(): Response
     {
+        // todo, grab ip from request.
         $query = new FetchWeatherByIpQuery();
-        $this->queryHandler->query($query);
-        // todo, plug model into view
+        $weatherModel = $this->queryHandler->query($query);
 
-        return $this->render('index.html.twig', [
-            'windSpeed' => 6,
-            'rainData' => [
-                '10:00' => 1,
-                '11:00' => 2,
-                '12:00' => 0,
-                '13:00' => 0,
-                '14:00' => 2
-            ]
-        ]);
+        return $this->render('index.html.twig', ['data' => $weatherModel]);
     }
 }
