@@ -11,6 +11,15 @@ class HomeController extends AbstractController
     #[Route('/')]
     public function number(): Response
     {
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'windSpeed' => 6,
+            'rainData' => [
+                '10:00' => 1,
+                '11:00' => 2,
+                '12:00' => 0,
+                '13:00' => 0,
+                '14:00' => 2
+            ]
+        ]);
     }
 }

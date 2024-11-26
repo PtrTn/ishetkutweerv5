@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 const windChart = document.getElementById('windChart');
-const windValue = 6;
+const windValue = JSON.parse(windChart.getAttribute('data-windSpeed'));
 
 const rainChart = document.getElementById('rainChart');
-const rainData = {'10:00': 1, '11:00': 2, '12:00': 0, '13:00': 0, '14:00': 2}
+const rainData = JSON.parse(rainChart.getAttribute('data-rainData'));
 
 const gaugeNeedle = {
     id: "gaugeNeedle",
