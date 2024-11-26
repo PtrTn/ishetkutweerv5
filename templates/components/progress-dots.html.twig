@@ -1,0 +1,19 @@
+{% set parts = 8 %}
+{% set increment = (max - min) / parts %}
+<div class="d-flex justify-content-between px-1 text-black-50">
+    {% for i in 0..parts %}
+        <span>{{ min + increment * i }}</span>
+    {% endfor %}
+</div>
+<div class="progress bg-transparent" style="height: 12px;">
+    {% for i in 0..parts %}
+        {% set color = 'blue' %}
+        {% if value < min + increment * i %}
+            {% set color = 'gray' %}
+        {% endif %}
+        <div class="progress-bar rounded-2 progress-bar-{{ color }}" role="progressbar" style="width: {{ (100 / parts * 3) * 2 }}%"></div>
+        {% if not loop.last %}
+            <div class="progress-bar rounded-2 bg-transparent" role="progressbar" style="width: {{ (100 / parts * 3) }}%"></div>
+        {% endif %}
+    {% endfor %}
+</div>
