@@ -17,8 +17,8 @@ class WeatherIconModelFactory
             '',
             $stationDto->fullIconUrl
         );
-        if (strlen($icon) !== 1) {
-            throw new \RuntimeException('Unable to parse weather icon');
+        if (strlen($icon) < 1 || strlen($icon) > 2) {
+            throw new \RuntimeException(sprintf('Unable to parse weather icon "%s"', $icon));
         }
 
         $mapping = [
@@ -44,10 +44,12 @@ class WeatherIconModelFactory
             'V' => 'cloud-snow1',
             'W' => 'cloud-snow-rain',
             'X' => 'cloud-snow-thunder',
+            'CC' => 'cloud',
+            'QQ' => 'rain',
         ];
 
         if (!array_key_exists($icon, $mapping)) {
-            throw new \RuntimeException('Unable to find svg matching weather icon');
+            throw new \RuntimeException(sprintf('Unable to find svg matching weather icon "%s"', $icon));
         }
 
         return new WeatherIconModel($mapping[$icon] . '.svg');
