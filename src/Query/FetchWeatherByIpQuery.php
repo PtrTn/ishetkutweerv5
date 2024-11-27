@@ -2,7 +2,9 @@
 
 namespace App\Query;
 
-class FetchWeatherByIpQuery
+readonly class FetchWeatherByIpQuery
 {
-
+    public function __construct(public string $ipAddress)
+    {
+    }
 }

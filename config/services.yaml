@@ -22,3 +22,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    GeoIp2\Database\Reader:
+        class: GeoIp2\Database\Reader
+        arguments:
+            - '%kernel.project_dir%/var/data/GeoLite2-City.mmdb'
+
+    Geokit\Math:
+        class: Geokit\Math
