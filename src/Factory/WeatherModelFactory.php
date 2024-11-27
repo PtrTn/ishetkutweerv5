@@ -28,7 +28,7 @@ class WeatherModelFactory
             (int) round($stationDto->feeltemperature),
             (int) round($stationDto->windspeedBft),
             (int) round($stationDto->precipitation),
-            (int) round($stationDto->sunpower / 10),
+            (int) round($stationDto->sunpower / 100),
             $stationDto->winddirection, // todo, translate to text
             (int) $stationDto->winddirectiondegrees,
         );
