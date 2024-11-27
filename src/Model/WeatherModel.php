@@ -17,8 +17,7 @@ readonly class WeatherModel
         public int $windSpeed,
         public int $rain,
         public int $sunPower,
-        public string $windDirectionText,
-        public int $windDirectionDegrees,
+        public WindDirectionModel $wind
     )
     {
     }

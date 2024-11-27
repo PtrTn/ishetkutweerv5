@@ -104,9 +104,8 @@
                                     <div class="col-4">
                                         <div class="bg-white rounded-4 h-100 p-3">
                                             <p class="fs-4 mb-0">Windrichting</p>
-                                            <p class="fs-4 fw-bold mb-0">{{ data.windDirectionText }}</p>
-                                            {# todo, make rotation dynamic #}
-                                            <div class="d-inline-block rotate-135">
+                                            <p class="fs-4 fw-bold mb-0">{{ data.wind.directionText }}</p>
+                                            <div class="d-inline-block" style="transform: rotate({{ data.wind.directionInDegrees }}deg)">
                                                 <i class="bi bi-arrow-up-circle fs-h-5 text-blue"></i>
                                             </div>
                                         </div>

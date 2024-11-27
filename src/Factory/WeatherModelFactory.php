@@ -9,6 +9,12 @@ use App\Model\WeatherModel;
 
 class WeatherModelFactory
 {
+    public function __construct(
+        private WindDirectionModelFactory $windDirectionModelFactory
+    )
+    {
+    }
+
     public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto): WeatherModel
     {
         $dateTime = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s', $stationDto->timestamp);
@@ -29,8 +35,7 @@ class WeatherModelFactory
             (int) round($stationDto->windspeedBft),
             (int) round($stationDto->precipitation),
             (int) round($stationDto->sunpower / 100),
-            $stationDto->winddirection, // todo, translate to text
-            (int) $stationDto->winddirectiondegrees,
+            $this->windDirectionModelFactory->create($stationDto)
         );
     }
 }
