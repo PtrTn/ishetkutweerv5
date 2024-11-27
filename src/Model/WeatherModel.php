@@ -9,7 +9,7 @@ readonly class WeatherModel
         public \DateTimeImmutable $dateTime,
         public int $temperature,
         public string $shortDescription,
-        public string $animationIcon,
+        public WeatherIconModel $weatherIcon,
         public string $title,
         public string $longDescription,
         public RainForecastModel $rainForecast,

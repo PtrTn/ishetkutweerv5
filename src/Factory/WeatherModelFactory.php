@@ -10,7 +10,8 @@ use App\Model\WeatherModel;
 class WeatherModelFactory
 {
     public function __construct(
-        private WindDirectionModelFactory $windDirectionModelFactory
+        private WeatherIconModelFactory $weatherIconModelFactory,
+        private WindDirectionModelFactory $windDirectionModelFactory,
     )
     {
     }
@@ -27,7 +28,7 @@ class WeatherModelFactory
             $dateTime,
             (int) round($stationDto->temperature),
             $stationDto->weatherdescription,
-            'rainy', // todo, calculate dynamically
+            $this->weatherIconModelFactory->create($stationDto),
             $forecastDto->weatherreport->title,
             $forecastDto->weatherreport->summary,
             new RainForecastModel(), // todo, get rain data for upcoming hours

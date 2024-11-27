@@ -19,7 +19,6 @@
 }
 
 .weather-background-image {
-    background-image: url( '/images/rainy.svg' );
     background-size: 400px;
     background-repeat: no-repeat;
     background-position: bottom 50px center;
