@@ -1,0 +1,22 @@
+{% set parts = 5 %}
+{% set increment = (max - min) / parts %}
+{% set minSize = 20 %}
+{% set maxSize = 36 %}
+{% set sizeIncrement = (maxSize - minSize) / (parts - 1) %}
+<div class="d-flex justify-content-between px-2 text-black-50">
+    {% for i in 0..(parts - 1) %}
+        <span>{{ min + increment * i }}-{{ min + increment * (i + 1) - 1 }}</span>
+    {% endfor %}
+</div>
+<div class="progress bg-transparent d-flex align-items-center justify-content-center" style="height: 36px;">
+    {% for i in 0..(parts - 1) %}
+        {% set color = 'blue' %}
+        {% if value < min + increment * i %}
+            {% set color = 'gray' %}
+        {% endif %}
+        <div class="progress-bar rounded-2 progress-bar-{{ color }}" role="progressbar" style="width: {{ (100 / parts * 5) * 4 }}%; height: {{ minSize + sizeIncrement * i }}px;"></div>
+        {% if not loop.last %}
+            <div class="progress-bar rounded-2 bg-transparent" role="progressbar" style="width: {{ (100 / parts * 5) * 1 }}%; height: {{ minSize + sizeIncrement * i }}px;"></div>
+        {% endif %}
+    {% endfor %}
+</div>
