@@ -30,8 +30,20 @@ class WeatherIconModelFactory
             'F' => 'sun-cloud-rain1',
             'G' => 'sun-cloud-rain-thunder',
             'H' => 'sun-cloud-rain3',
-            'I' => 'sun-cloud-snow',
+            'I' => 'sun-cloud-snow2',
+            'J' => 'sun-cloud',
+            'K' => 'cloud-rain2',
+            'M' => 'cloud-rain1',
+            'N' => 'sun-mist',
+            'O' => 'cloud-mist',
             'Q' => 'rain',
+            'R' => 'sun-cloud',
+            'S' => 'cloud-rain-thunder',
+            'T' => 'cloud-snow2',
+            'U' => 'sun-cloud-snow1',
+            'V' => 'cloud-snow1',
+            'W' => 'cloud-snow-rain',
+            'X' => 'cloud-snow-thunder',
         ];
 
         if (!array_key_exists($icon, $mapping)) {
