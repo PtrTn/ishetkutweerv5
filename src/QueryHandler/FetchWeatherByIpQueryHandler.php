@@ -4,6 +4,7 @@ namespace App\QueryHandler;
 
 use App\ApiClient\BuienradarApiClient;
 use App\Factory\BuienradarResponseDtoFactory;
+use App\Factory\RainResponseDtoFactory;
 use App\Factory\WeatherModelFactory;
 use App\Filter\LocationFilter;
 use App\Locator\IpLocator;
@@ -14,8 +15,9 @@ class FetchWeatherByIpQueryHandler
 {
     public function __construct(
         private IpLocator $ipLocator,
-        private BuienradarApiClient $apiClient,
-        private BuienradarResponseDtoFactory $responseFactory,
+        private BuienradarApiClient $buienradarApiClient,
+        private BuienradarResponseDtoFactory $buienradarResponseDtoFactory,
+        private RainResponseDtoFactory $rainResponseDtoFactory,
         private LocationFilter $locationFilter,
         private WeatherModelFactory $modelFactory,
     )
@@ -25,8 +27,12 @@ class FetchWeatherByIpQueryHandler
     public function query(FetchWeatherByIpQuery $query): WeatherModel
     {
         $location = $this->ipLocator->getLocationForIp($query->ipAddress);
-        $responseData = $this->apiClient->getData();
-        $responseDto = $this->responseFactory->create($responseData);
+
+        $weatherData = $this->buienradarApiClient->getWeatherData();
+        $responseDto = $this->buienradarResponseDtoFactory->create($weatherData);
+
+        $rainData = $this->buienradarApiClient->getRainData($location->lat, $location->lon);
+        $rainDto = $this->rainResponseDtoFactory->create($rainData);
 
         // todo, filter incomplete data
         $stationDto = $this->locationFilter->filter($location, $responseDto->actual->stationmeasurements);
