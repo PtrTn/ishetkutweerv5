@@ -3,6 +3,7 @@
 namespace App\Factory;
 
 use App\Dto\ForecastDto;
+use App\Dto\RainResponseDto;
 use App\Dto\StationMeasurementDto;
 use App\Model\RainForecastModel;
 use App\Model\WeatherModel;
@@ -12,11 +13,12 @@ class WeatherModelFactory
     public function __construct(
         private WeatherIconModelFactory $weatherIconModelFactory,
         private WindDirectionModelFactory $windDirectionModelFactory,
+        private RainForecastModelFactory $rainForecastModelFactory
     )
     {
     }
 
-    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto): WeatherModel
+    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto, RainResponseDto $rainDto): WeatherModel
     {
         $dateTime = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s', $stationDto->timestamp);
         if ($dateTime === false) {
@@ -31,7 +33,7 @@ class WeatherModelFactory
             $this->weatherIconModelFactory->create($stationDto),
             $forecastDto->weatherreport->title,
             $forecastDto->weatherreport->summary,
-            new RainForecastModel(), // todo, get rain data for upcoming hours
+            $this->rainForecastModelFactory->create($rainDto),
             (int) round($stationDto->feeltemperature),
             (int) round($stationDto->windspeedBft),
             (int) round($stationDto->precipitation),
