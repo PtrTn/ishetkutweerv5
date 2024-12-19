@@ -46,6 +46,7 @@ class WeatherIconModelFactory
             'X' => 'cloud-snow-thunder',
             'CC' => 'cloud',
             'QQ' => 'rain',
+            'BB' => 'cloud-night',
         ];
 
         if (!array_key_exists($icon, $mapping)) {
