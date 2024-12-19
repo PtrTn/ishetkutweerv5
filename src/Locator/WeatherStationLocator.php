@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace App\Locator;
 
 use App\Dto\StationMeasurementDto;
-use Geokit\LatLng;
-use Geokit\Math;
+use Geokit\Position;
+use function Geokit\distanceHaversine;
 
 class WeatherStationLocator
 {
-    private Math $math;
-
-    public function __construct(Math $math)
-    {
-        $this->math = $math;
-    }
-
     /** @param StationMeasurementDto[] $stationMeasurementDtos */
     public function findClosestStation(array $stationMeasurementDtos, float $targetLat, float $targetLon): ?StationMeasurementDto
     {
@@ -42,10 +35,10 @@ class WeatherStationLocator
 
     private function getDistance(float $latA, float $lonA, float $latB, float $lonB): float
     {
-        $distance = $this->math->distanceHaversine(
-            new LatLng($latA, $lonA),
-            new LatLng($latB, $lonB)
-        );
+        $from = Position::fromXY($latA, $lonA);
+        $to = Position::fromXY($latB, $lonB);
+
+        $distance = distanceHaversine($from, $to);
 
         return $distance->kilometers();
     }
