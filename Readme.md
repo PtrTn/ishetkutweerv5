@@ -18,4 +18,3 @@ To deploy follow these steps:
 # Todo
 - Adjust website design for mobile users
 - Auto-deploy through Github actions
-- Fix error logging
