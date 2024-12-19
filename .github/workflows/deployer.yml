@@ -2,7 +2,7 @@ name: Deployer
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [main]
 concurrency: production_environment
 jobs:
   build:
