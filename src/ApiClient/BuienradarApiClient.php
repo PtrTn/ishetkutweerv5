@@ -39,7 +39,7 @@ class BuienradarApiClient
 
     public function getRainData(float $lat, float $lon): string
     {
-        $query = http_build_query(['lat' => $lat, 'lon' => $lon]);
+        $query = http_build_query(['lat' => round($lat, 1), 'lon' => round($lon, 1)]);
         try {
             $response = $this->httpClient->request('GET', self::RAIN_API_URL . '?' . $query);
         } catch (TransportExceptionInterface $exception) {
