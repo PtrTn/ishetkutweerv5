@@ -46,6 +46,7 @@ class WeatherIconModelFactory
             'X' => 'cloud-snow-thunder',
             'CC' => 'cloud',
             'QQ' => 'rain',
+            'AA' => 'night',
             'BB' => 'cloud-night',
         ];
 
