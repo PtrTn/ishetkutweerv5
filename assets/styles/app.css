@@ -18,12 +18,6 @@
     color: #5c9ce5 !important;
 }
 
-.weather-background-image {
-    background-size: 400px;
-    background-repeat: no-repeat;
-    background-position: bottom 50px center;
-}
-
 .data-point {
     min-width: 45px;
 }
