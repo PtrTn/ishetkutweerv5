@@ -51,6 +51,9 @@ const gaugeNeedle = {
     }
 };
 
+var numberOfColoredBackgrounds = Math.round(windValue / 2);
+var coloredBackgrounds = Array(numberOfColoredBackgrounds).fill("#5c9ce5");
+var uncoloredBackgrounds = Array(5 - numberOfColoredBackgrounds).fill("#e9ecef");
 new Chart(windChart, {
     type: 'doughnut',
     data: {
@@ -58,7 +61,7 @@ new Chart(windChart, {
             data: [2, 2, 2, 2, 2],
             needleValue: windValue,
             meterValue: windValue + ' bft.',
-            backgroundColor: ["#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5", "#5c9ce5"]
+            backgroundColor: coloredBackgrounds.concat(uncoloredBackgrounds),
         }]
     },
     options: {
@@ -66,6 +69,7 @@ new Chart(windChart, {
         cutout: '70%',
         circumference: 180,
         borderWidth: 10,
+        events: [],
     },
 
     plugins: [gaugeNeedle]
