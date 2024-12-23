@@ -9,6 +9,12 @@
                         <div class="row m-4">
                             <div class="col text-center">
                                 <p class="fs-1 mb-0">{{ data.region }}</p>
+                                <input class="form-control" list="datalistOptions" placeholder="Plaatsnaam">
+                                <datalist id="datalistOptions">
+                                    {% for city in data.cities %}
+                                        <option value="{{ city }}">
+                                    {% endfor %}
+                                </datalist>
                                 <p class="fs-4 mb-0">{{ data.dateTime|date("d F Y") }}</p>
                             </div>
                         </div>

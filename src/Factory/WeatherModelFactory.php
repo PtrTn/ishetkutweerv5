@@ -13,7 +13,8 @@ class WeatherModelFactory
     public function __construct(
         private WeatherIconModelFactory $weatherIconModelFactory,
         private WindDirectionModelFactory $windDirectionModelFactory,
-        private RainForecastModelFactory $rainForecastModelFactory
+        private RainForecastModelFactory $rainForecastModelFactory,
+        private CityFactory $cityFactory,
     )
     {
     }
@@ -24,6 +25,8 @@ class WeatherModelFactory
         if ($dateTime === false) {
             throw new \RuntimeException('Unable to format datetime');
         }
+
+        $cities = $this->cityFactory->create();
 
         return new WeatherModel(
             $stationDto->regio,
@@ -38,7 +41,8 @@ class WeatherModelFactory
             (int) round($stationDto->windspeedBft),
             (int) round($stationDto->precipitation),
             (int) round($stationDto->sunpower / 100),
-            $this->windDirectionModelFactory->create($stationDto)
+            $this->windDirectionModelFactory->create($stationDto),
+            $cities
         );
     }
 }
