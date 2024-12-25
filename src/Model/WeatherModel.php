@@ -17,7 +17,8 @@ readonly class WeatherModel
         public int $windSpeed,
         public int $rain,
         public int $sunPower,
-        public WindDirectionModel $wind
+        public WindDirectionModel $wind,
+        public array $cities
     )
     {
     }

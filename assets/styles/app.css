@@ -84,3 +84,17 @@
 .footer-widget {
     border: 1px solid #444;
 }
+
+#autocompleteDatalist {
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+#autocompleteDatalist::placeholder {
+    color: white;
+}
+#autocompleteDatalist::-webkit-search-cancel-button{
+    filter: brightness(0) invert(1);
+
+}

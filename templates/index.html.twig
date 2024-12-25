@@ -8,7 +8,12 @@
                     <div class="col-12 col-lg-4 text-white">
                         <div class="row m-4">
                             <div class="col text-center">
-                                <p class="fs-1 mb-0">{{ data.region }}</p>
+                                <input type="search" class="form-control fs-1" id="autocompleteDatalist" data-datalist="list-timezone" placeholder="{{ data.region|capitalize  }}" />
+                                <datalist id="list-timezone">
+                                    {% for city in data.cities %}
+                                        <option>{{ city }}</option>
+                                    {% endfor %}
+                                </datalist>
                                 <p class="fs-4 mb-0">{{ data.dateTime|date("d F Y") }}</p>
                             </div>
                         </div>

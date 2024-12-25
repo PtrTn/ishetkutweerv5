@@ -30,4 +30,7 @@ return [
         'version' => '1.11.3',
         'type' => 'css',
     ],
+    'bootstrap5-autocomplete' => [
+        'version' => '1.1.34',
+    ],
 ];
