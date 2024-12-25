@@ -7,6 +7,11 @@
 .bg-lighterblue {
     background-color: #e4f1ff;
 }
+@media (min-width: 992px) {
+    .bg-lg-lightblue {
+        background-color: #b4d7fe;
+    }
+}
 .progress-bar-blue {
     background-color: #5c9ce5 !important;
 }
