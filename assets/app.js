@@ -5,7 +5,10 @@ import Autocomplete from 'bootstrap5-autocomplete';
 
 Autocomplete.init();
 const opts = {
-    onSelectItem: (item) => window.location.href = '/' + item.value,
+    onSelectItem: (item) => {
+        document.getElementById("autocompleteLoader").classList.remove('visually-hidden');
+        return window.location.href = '/' + item.value;
+    },
     fullWidth: true,
     notFoundMessage: 'Geen plaats gevonden',
     startsWith: true,
