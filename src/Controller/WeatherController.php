@@ -4,8 +4,7 @@ namespace App\Controller;
 
 use App\Query\FetchWeatherByCityQuery;
 use App\Query\FetchWeatherByIpQuery;
-use App\QueryHandler\FetchWeatherByIpQueryHandler;
-use App\QueryHandler\FetchWeatherByCityQueryHandler;
+use App\QueryHandler\FetchWeatherQueryHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class WeatherController extends AbstractController
 {
-    public function __construct(
-        private FetchWeatherByIpQueryHandler $ipQueryHandler,
-        private FetchWeatherByCityQueryHandler $cityQueryHandler,
-    )
+    public function __construct(private FetchWeatherQueryHandler $queryHandler)
     {
     }
 
@@ -28,7 +24,7 @@ class WeatherController extends AbstractController
             $ip = '77.170.193.100';
         }
         $query = new FetchWeatherByIpQuery($ip);
-        $weatherModel = $this->ipQueryHandler->query($query);
+        $weatherModel = $this->queryHandler->queryByIp($query);
 
         return $this->render('index.html.twig', ['data' => $weatherModel]);
     }
@@ -37,7 +33,7 @@ class WeatherController extends AbstractController
     public function weatherByCity(string $city): Response
     {
         $query = new FetchWeatherByCityQuery($city);
-        $weatherModel = $this->cityQueryHandler->query($query);
+        $weatherModel = $this->queryHandler->queryByCity($query);
 
         return $this->render('index.html.twig', ['data' => $weatherModel]);
     }
