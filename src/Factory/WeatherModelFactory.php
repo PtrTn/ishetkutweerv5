@@ -19,7 +19,7 @@ class WeatherModelFactory
     {
     }
 
-    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto, RainResponseDto $rainDto): WeatherModel
+    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto, RainResponseDto $rainDto, string $city): WeatherModel
     {
         $dateTime = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s', $stationDto->timestamp);
         if ($dateTime === false) {
@@ -29,7 +29,7 @@ class WeatherModelFactory
         $cities = $this->cityFactory->create();
 
         return new WeatherModel(
-            $stationDto->regio,
+            $stationDto->regio, // todo, use $city after fixing location mismatching
             $dateTime,
             (int) round($stationDto->temperature),
             $stationDto->weatherdescription,
