@@ -18,7 +18,7 @@ class CityRepository
         $cities = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'cities.json');
         $citiesWithProperties = json_decode($cities, true);
         foreach ($citiesWithProperties as $cityWithProperties) {
-            if (strcasecmp($cityWithProperties['city'], $city)) {
+            if (strcasecmp($cityWithProperties['city'], $city) === 0) {
                 return new LocationDto($cityWithProperties['latitude'], $cityWithProperties['longitude']);
             }
         }

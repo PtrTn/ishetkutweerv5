@@ -8,7 +8,6 @@ use App\Factory\RainResponseDtoFactory;
 use App\Factory\WeatherModelFactory;
 use App\Filter\LocationFilter;
 use App\Locator\CityLocator;
-use App\Locator\IpLocator;
 use App\Model\WeatherModel;
 use App\Query\FetchWeatherByCityQuery;
 
