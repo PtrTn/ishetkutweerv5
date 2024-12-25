@@ -1,6 +1,17 @@
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
+import Autocomplete from 'bootstrap5-autocomplete';
+
+Autocomplete.init();
+const opts = {
+    onSelectItem: (item) => window.location.href = '/' + item.value,
+    fullWidth: true,
+    notFoundMessage: 'Geen plaats gevonden',
+    startsWith: true,
+    preventBrowserAutocomplete: true,
+};
+new Autocomplete(document.getElementById("autocompleteDatalist"), opts);
 
 const windChart = document.getElementById('windChart');
 const windValue = JSON.parse(windChart.getAttribute('data-windSpeed'));
