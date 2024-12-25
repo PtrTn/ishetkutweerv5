@@ -7,6 +7,7 @@ namespace App\Dto;
 readonly class LocationDto
 {
     public function __construct(
+        public string $city,
         public float $lat,
         public float $lon
     )

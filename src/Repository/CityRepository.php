@@ -19,7 +19,11 @@ class CityRepository
         $citiesWithProperties = json_decode($cities, true);
         foreach ($citiesWithProperties as $cityWithProperties) {
             if (strcasecmp($cityWithProperties['city'], $city) === 0) {
-                return new LocationDto($cityWithProperties['latitude'], $cityWithProperties['longitude']);
+                return new LocationDto(
+                    $cityWithProperties['city'],
+                    $cityWithProperties['latitude'],
+                    $cityWithProperties['longitude']
+                );
             }
         }
 

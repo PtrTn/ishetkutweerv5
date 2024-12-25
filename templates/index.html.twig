@@ -8,7 +8,7 @@
                     <div class="col-12 col-lg-4 text-white">
                         <div class="row m-4">
                             <div class="col text-center">
-                                <input type="search" class="form-control fs-1" id="autocompleteDatalist" data-datalist="list-timezone" placeholder="{{ data.region|capitalize  }}" />
+                                <input type="search" class="form-control fs-1" id="autocompleteDatalist" data-datalist="list-timezone" placeholder="{{ data.region  }}" />
                                 <datalist id="list-timezone">
                                     {% for city in data.cities %}
                                         <option>{{ city }}</option>

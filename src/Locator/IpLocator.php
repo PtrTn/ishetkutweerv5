@@ -26,6 +26,7 @@ class IpLocator
         }
 
         return new LocationDto(
+            $city->city->name,
             $city->location->latitude,
             $city->location->longitude
         );

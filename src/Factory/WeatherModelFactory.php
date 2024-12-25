@@ -3,9 +3,9 @@
 namespace App\Factory;
 
 use App\Dto\ForecastDto;
+use App\Dto\LocationDto;
 use App\Dto\RainResponseDto;
 use App\Dto\StationMeasurementDto;
-use App\Model\RainForecastModel;
 use App\Model\WeatherModel;
 
 class WeatherModelFactory
@@ -19,7 +19,7 @@ class WeatherModelFactory
     {
     }
 
-    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto, RainResponseDto $rainDto, ?string $city): WeatherModel
+    public function create(StationMeasurementDto $stationDto, ForecastDto $forecastDto, RainResponseDto $rainDto, LocationDto $locationDto): WeatherModel
     {
         $dateTime = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s', $stationDto->timestamp);
         if ($dateTime === false) {
@@ -29,7 +29,7 @@ class WeatherModelFactory
         $cities = $this->cityFactory->create();
 
         return new WeatherModel(
-            $city ?? $stationDto->regio,
+            $locationDto->city,
             $dateTime,
             (int) round($stationDto->temperature),
             $stationDto->weatherdescription,

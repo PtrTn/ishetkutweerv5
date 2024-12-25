@@ -37,6 +37,6 @@ class FetchWeatherByIpQueryHandler
         // todo, filter incomplete data
         $stationDto = $this->locationFilter->filter($location, $responseDto->actual->stationmeasurements);
 
-        return $this->modelFactory->create($stationDto, $responseDto->forecast, $rainDto, null);
+        return $this->modelFactory->create($stationDto, $responseDto->forecast, $rainDto, $location);
     }
 }
