@@ -48,6 +48,7 @@ class WeatherIconModelFactory
             'QQ' => 'rain',
             'AA' => 'night',
             'BB' => 'cloud-night',
+            'DD' => 'cloud-night',
         ];
 
         if (!array_key_exists($icon, $mapping)) {
