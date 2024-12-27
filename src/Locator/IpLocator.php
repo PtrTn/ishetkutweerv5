@@ -25,6 +25,10 @@ class IpLocator
             throw new \RuntimeException('Unable to connect to geo location database', 0, $exception);
         }
 
+        if ($city->country->isoCode != 'NL') {
+            throw new \RuntimeException('Unable to use locations outside of the Netherlands');
+        }
+
         return new LocationDto(
             $city->city->name,
             $city->location->latitude,
