@@ -30,3 +30,6 @@ services:
 
     Geokit\Math:
         class: Geokit\Math
+
+    Sentry\Monolog\BreadcrumbHandler:
+        class: Sentry\Monolog\BreadcrumbHandler
