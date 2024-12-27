@@ -29,7 +29,7 @@ class WeatherController extends AbstractController
         return $this->render('index.html.twig', ['data' => $weatherModel]);
     }
 
-    #[Route('/{city}')]
+    #[Route('/plaats/{city}')]
     public function weatherByCity(string $city): Response
     {
         $query = new FetchWeatherByCityQuery($city);

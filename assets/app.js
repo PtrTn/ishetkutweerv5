@@ -7,7 +7,7 @@ Autocomplete.init();
 const opts = {
     onSelectItem: (item) => {
         document.getElementById("autocompleteLoader").classList.remove('visually-hidden');
-        return window.location.href = '/' + item.value;
+        return window.location.href = '/plaats/' + item.value;
     },
     fullWidth: true,
     notFoundMessage: 'Geen plaats gevonden',
