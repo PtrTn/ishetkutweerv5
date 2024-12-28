@@ -4,6 +4,8 @@ namespace App\Model;
 
 readonly class WeatherModel
 {
+    const FEEL_TEMPERATURE_RANGE = 30;
+
     public function __construct(
         public string $region,
         public \DateTimeImmutable $dateTime,
@@ -21,5 +23,29 @@ readonly class WeatherModel
         public array $cities
     )
     {
+    }
+
+    public function getMinFeelsTemperature(): int
+    {
+        if ($this->feelTemperature > 0 && $this->feelTemperature < 30){
+            return 0;
+        }
+        if ($this->feelTemperature <= 0) {
+            return floor(($this->feelTemperature - 1) / 10) * 10;
+        }
+
+        return $this->getMaxFeelsTemperature() - self::FEEL_TEMPERATURE_RANGE;
+    }
+
+    public function getMaxFeelsTemperature(): int
+    {
+        if ($this->feelTemperature > 0 && $this->feelTemperature < 30){
+            return 30;
+        }
+        if ($this->feelTemperature >= 30) {
+            return ceil(($this->feelTemperature + 1) / 10) * 10;
+        }
+
+        return $this->getMinFeelsTemperature() + self::FEEL_TEMPERATURE_RANGE;
     }
 }

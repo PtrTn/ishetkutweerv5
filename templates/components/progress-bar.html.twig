@@ -5,7 +5,8 @@
     <span>{{ max - increment }}{{ unit }}</span>
     <span>{{ max }}{{ unit }}</span>
 </div>
-{% set percentage = value / (max - min) * 100 %}
+
+{% set percentage = ((value - min) * 100) / (max - min) %}
 
 <div class="progress">
     <div class="progress-bar progress-bar-blue" role="progressbar" style="width: {{ percentage }}%" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"></div>

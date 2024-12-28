@@ -62,7 +62,7 @@
                                         <div class="bg-white rounded-4 h-100 p-3">
                                             <p class="fs-4 mb-0">Gevoels<wbr>temperatuur</p>
                                             <p class="fs-4 fw-bold">{{ data.feelTemperature }}&deg;</p>
-                                            {% include 'components/progress-bar.html.twig' with { 'min': 0, 'max': 30, 'value': data.feelTemperature, 'unit': '°' } %}
+                                            {% include 'components/progress-bar.html.twig' with { 'min': data.minFeelsTemperature, 'max': data.maxFeelsTemperature, 'value': data.feelTemperature, 'unit': '°' } %}
                                         </div>
                                     </div>
                                     <div class="col-12 col-xl-4 col-lg-6 mt-4 mt-lg-0">
