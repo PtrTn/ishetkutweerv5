@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-lg min-vh-100 d-flex flex-column">
+        <div class="row flex-fill">
+            <div class="col-12 bg-lighterblue text-center my-lg-5">
+                <div class="row">
+                    <div class="col my-4 mx-lg-4">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-4 col-lg-2">
+                                <span class="fs-h-1">5</span>
+                            </div>
+                            <div class="col-4 col-lg-2">
+                                <img class="img-fluid ratio ratio-1x1" src="/images/sun-404.svg"/>
+                            </div>
+                            <div class="col-4 col-lg-2">
+                                <img class="img-fluid ratio ratio-1x1" src="/images/sun-404.svg"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h1>Er is iets mis gegaan</h1>
+                        <p>Bij het laden van deze pagina is er iets fout gegaan; wat kut weer. Er wordt naar de foutmelding gekeken</p>
+                        <a class="btn btn-outline-dark" href="/" role="button">Terug naar home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
