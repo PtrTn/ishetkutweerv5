@@ -29,6 +29,10 @@ class IpLocator
             throw new \RuntimeException('Unable to use locations outside of the Netherlands');
         }
 
+        if ($city->city->name === null) {
+            throw new \RuntimeException('Unable to find city name for location');
+        }
+
         return new LocationDto(
             $city->city->name,
             $city->location->latitude,
