@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Locator;
 
 use App\Dto\LocationDto;
+use App\Exceptions\SorryCountryNotSupported;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
 use MaxMind\Db\Reader\InvalidDatabaseException;
@@ -26,11 +27,7 @@ class IpLocator
         }
 
         if ($city->country->isoCode != 'NL') {
-            throw new \RuntimeException('Unable to use locations outside of the Netherlands');
-        }
-
-        if ($city->city->name === null) {
-            throw new \RuntimeException('Unable to find city name for location');
+            throw new SorryCountryNotSupported();
         }
 
         return new LocationDto(

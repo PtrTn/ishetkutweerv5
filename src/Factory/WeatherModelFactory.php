@@ -29,7 +29,7 @@ class WeatherModelFactory
         $cities = $this->cityFactory->create();
 
         return new WeatherModel(
-            $locationDto->city,
+            $locationDto->city ?? 'Onbekend',
             $dateTime,
             (int) round($stationDto->temperature),
             $stationDto->weatherdescription,
