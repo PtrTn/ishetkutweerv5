@@ -2,13 +2,15 @@
 
 namespace App\Model;
 
+use DateTimeImmutable;
+
 readonly class WeatherModel
 {
     const FEEL_TEMPERATURE_RANGE = 30;
 
     public function __construct(
         public string $region,
-        public \DateTimeImmutable $dateTime,
+        public ?DateTimeImmutable $dateTime,
         public int $temperature,
         public string $shortDescription,
         public ?WeatherIconModel $weatherIcon,

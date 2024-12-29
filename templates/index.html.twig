@@ -15,7 +15,9 @@
                                 <option>{{ city }}</option>
                             {% endfor %}
                         </datalist>
-                        <p class="fs-4 mb-0">{{ data.dateTime|date("d F Y") }}</p>
+                        {% if data.dateTime %}
+                            <p class="fs-4 mb-0">{{ data.dateTime|date("d F Y") }}</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row mx-4 mb-4 text-center">
@@ -101,7 +103,13 @@
                                     <div class="col-12 col-xl-4 col-lg-6 mt-4">
                                         <div class="bg-white rounded-4 h-100 p-3">
                                             <p class="fs-4">Gemeten om</p>
-                                            <p class="fs-3 fw-bold">{{ data.dateTime|date('H:i', "Europe/Amsterdam") }}</p>
+                                            <p class="fs-3 fw-bold">
+                                                {% if data.dateTime %}
+                                                    {{ data.dateTime|date('H:i', "Europe/Amsterdam") }}
+                                                {% else %}
+                                                    Onbekend
+                                                {% endif %}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
