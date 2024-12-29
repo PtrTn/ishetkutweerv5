@@ -11,7 +11,7 @@ readonly class WeatherModel
         public \DateTimeImmutable $dateTime,
         public int $temperature,
         public string $shortDescription,
-        public WeatherIconModel $weatherIcon,
+        public ?WeatherIconModel $weatherIcon,
         public string $title,
         public string $longDescription,
         public RainForecastModel $rainForecast,

@@ -4,13 +4,18 @@ namespace App\Factory;
 
 use App\Dto\StationMeasurementDto;
 use App\Model\WeatherIconModel;
+use Psr\Log\LoggerInterface;
 
 class WeatherIconModelFactory
 {
     private const BASE_STRING = 'https://www.buienradar.nl/resources/images/icons/weather/96x96/';
     private const FILE_EXTENSION = '.png';
 
-    public function create(StationMeasurementDto $stationDto): WeatherIconModel
+    public function __construct(private LoggerInterface $logger)
+    {
+    }
+
+    public function create(StationMeasurementDto $stationDto): ?WeatherIconModel
     {
         $icon = str_replace(
             [self::BASE_STRING, self::FILE_EXTENSION],
@@ -18,7 +23,8 @@ class WeatherIconModelFactory
             $stationDto->fullIconUrl
         );
         if (strlen($icon) < 1 || strlen($icon) > 2) {
-            throw new \RuntimeException(sprintf('Unable to parse weather icon "%s"', $icon));
+            $this->logger->warning('Unable to parse weather icon "{icon}"', ['icon' => $icon]);
+            return null;
         }
 
         $mapping = [
@@ -52,7 +58,8 @@ class WeatherIconModelFactory
         ];
 
         if (!array_key_exists($icon, $mapping)) {
-            throw new \RuntimeException(sprintf('Unable to find svg matching weather icon "%s"', $icon));
+            $this->logger->warning('Unable to find svg matching weather icon "{icon}"', ['icon' => $icon]);
+            return null;
         }
 
         return new WeatherIconModel($mapping[$icon] . '.svg');

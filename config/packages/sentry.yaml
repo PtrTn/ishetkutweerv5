@@ -15,7 +15,7 @@ when@prod:
         handlers:
             sentry:
                 type: sentry
-                level: !php/const Monolog\Logger::ERROR
+                level: !php/const Monolog\Logger::WARNING
                 hub_id: Sentry\State\HubInterface
                 fill_extra_context: true # Enables sending monolog context to Sentry
             sentry_breadcrumbs:

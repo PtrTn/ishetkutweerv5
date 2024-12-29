@@ -27,7 +27,9 @@
                     </div>
                     <div class="col-6 col-lg-12 order-2 order-lg-3">
                         <div class="d-flex align-items-center h-100">
-                            <img class="img-fluid w-100" src="/images/{{ data.weatherIcon.fileName }}"/>
+                            {% if data.weatherIcon %}
+                                <img class="img-fluid w-100" src="/images/{{ data.weatherIcon.fileName }}"/>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
