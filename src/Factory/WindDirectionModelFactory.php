@@ -4,13 +4,25 @@ namespace App\Factory;
 
 use App\Dto\StationMeasurementDto;
 use App\Model\WindDirectionModel;
+use Psr\Log\LoggerInterface;
 
 class WindDirectionModelFactory
 {
+    public function __construct(private LoggerInterface $logger)
+    {
+    }
+
     public function create(StationMeasurementDto $stationDto): WindDirectionModel
     {
+        try {
+            $windDirectionText = $this->translateWindDirection($stationDto->winddirectiondegrees);
+        } catch (\RuntimeException $exception) {
+            $this->logger->warning('Defaulting to API-provided wind direction text', ['exception' => $exception]);
+            $windDirectionText = $stationDto->winddirection;
+        }
+
         return new WindDirectionModel(
-            $this->translateWindDirection($stationDto->winddirectiondegrees),
+            $windDirectionText,
             $stationDto->winddirectiondegrees
         );
     }
@@ -41,6 +53,10 @@ class WindDirectionModelFactory
 
         $directionIndex = (int) round(($windDirectionInDegrees / 22.5) + 1);
 
-        return $translations[$directionIndex] ?? throw new \RuntimeException('Unable to map wind direction index to translation');
+        if (!isset($translations[$directionIndex])) {
+            throw new \RuntimeException('Unable to map wind direction index to translation');
+        }
+
+        return $translations[$directionIndex];
     }
 }
